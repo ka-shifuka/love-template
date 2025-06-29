@@ -20,14 +20,14 @@ git clone https://github.com/ka-shifuka/love-template
 rm -rf .git/
 ```
 
-if you wanna create a game.love file you can use make or lua .make.lua
+if you wanna create a game.love file you can use 'make' or 'lua .make.lua'
 ```bash
-make # this make _dist/game.love
+make # this make game.love file inside _dist/ folder
 ```
-if you dont have a gnu make installed in your envroment you can use lua
+if you dont have a gnu make installed in your enviroment you can use lua
 ```bash
-lua .make.lua # this is also make _dist/game.love
+lua .make.lua # this is also make game.love file inside _dist/ folder
 ```
 
-important make and lua .make.lua only can use in linux envroment because is use command like zip, rm and mkdir
+important 'make' and 'lua' .make.lua only can use in linux enviroment because is use command like zip, rm and mkdir
 
