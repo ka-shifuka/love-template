@@ -1,6 +1,11 @@
-GAME_LOVE = _dist/game.love
-EXCLUDE_ZIP = _dist/**/* .git/**/* Makefile .gitignore .editorconfig .luarc.json .make.lua
+DIST_FOLDER = _dist
+GAME_LOVE = ${DIST_FOLDER}/game.love
+EXCLUDE_ZIP = _dist/**\* .git/**\* Makefile .gitignore .editorconfig .luarc.json .make.lua
 
 zip:
-	rm -rf ${GAME_LOVE}
+	${MAKE} destroy
+	mkdir ${DIST_FOLDER}/
 	zip -r0 ${GAME_LOVE} . -x ${EXCLUDE_ZIP}
+
+destroy:
+	rm -rf ${DIST_FOLDER}/ 

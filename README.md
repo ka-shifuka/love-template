@@ -1,0 +1,34 @@
+# Love2d game development template repository
+This is a template repository for fast development for developing game with love2d game framework. This include some library including: 
+
+- gooi ui library
+- sti library
+- hump library
+- anim8 library
+- tween library
+- windfield library 
+- lovebird library for debuging
+
+## Back story
+Sience i'm making game with love2d i need some very basic template that only include some library that i'm used every making new project. And so i make this template repo, this template repo is a zero rule template. I call it zero rule template because this only provide a library and some tool everything is on our to make the game.
+
+## Get started
+First clone this git repository and make sure you remove the .git directory for your own git repository
+
+```bash
+git clone https://github.com/ka-shifuka/love-template
+rm -rf .git/
+```
+
+
+important this only can used in linux envroment because is use command like
+zip, rm and mkdir
+
+if you wanna create a game.love file you can use make or lua .make.lua
+```bash
+make # this make _dist/game.love
+```
+if you dont have a gnu make installed in your envroment you can use lua
+```bash
+lua .make.lua # this is also make _dist/game.love
+```
