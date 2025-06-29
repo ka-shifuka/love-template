@@ -1,0 +1,141 @@
+---@meta
+
+---@class STI_Map
+---@field layers Layer[] A list of individual layer index by name
+---@field object Object[] A list of individual object index by name
+---@field freeBatchSprites any[] A list of no-longer-used batch sprites, index by batch
+---@field tiles Tile[] A list of individual tile index by ID
+---@field tileInstances TileInstance[] A list of individual tile instance index by ID
+---
+---@field drawLayer fun(self:self, layer:Layer) Param is a map.layer
+---@field addCustomLayer fun(self:self, name:string, index:number) Crrate a custom layer to pleace userdata in (like player sprite)
+---@field addNewLayerTile fun(self:self, layer:Layer, chunk:any, tile:any, number:number, number:number) Place new tile instance
+---@field convertPixelToTile fun(self:self, x:number, y:number) Convert pixel location to tile location
+---@field convertTileToPixel fun(self:self, x:number, y:number) Convert tile location to pixel location
+---@field draw fun(self:self, tx:number|nil, ty:number|nil, sx:number|nil, sy:number|nil) Draw every layer
+---@field drawImageLayer fun(self:self, layer:Layer) Default draw function or image layer 
+---@field drawObjectLayer fun(self:self, layer:Layer) Default draw function for object layer
+---@field drawTileLayer fun(self:self, layer:Layer) Default draw funtion for tile layer
+---@field getLayerProperties fun(self:self, layer:Layer) Get custom properties from layer
+---@field getLayerTilePosition fun(self:self, layer:Layer, tile:any, x:number, y:number) Convert tile location to tile instance location 
+---@field getObjectProperties fun(self:self, layer:Layer, object:any) Get custom properties from object
+---@field getTileProperties fun(self:self, layer:Layer, x:number, y:number) Get custom properties from tile
+---@field groupApendToList fun(self:self, layers:Layer[], layer:Layer) Layers form the group are added to the list
+---@field init fun(self:self, path:string, plugins:any, ox:number, oy:number) Instance a new map
+---@field loadPlugin fun(self:self, plugins:any) Load plugin
+---@field removeLayer fun(self:self, index:any) Remove a layer from the layer stack
+---@field resize fun(self:self, w:number, h:number) Resize drawable area of map
+---@field setFlippedGID fun(self:self, gid:any)  Cretae flipped or rotated tiles based on bitop flags
+---@field setLayer fun(self:self, layer:Layer, path:string) Create layer
+---@field setLayerTile fun(self:self, layer:Layer, x:number, y:number, gid:any) Chnage a tile in a layer to another tile
+---@field setObjectCoordinate fun(self:self, layer:Layer) Correct position and orientation of object in an object layer
+---@field setObjectData fun(self:self, layer:Layer) Add objects to layer
+---@field setObjectSpriteBatches fun(self:self, layer:Layer) Bacth tiles i oobject layer for improved draw speed
+---@field setTileData fun(self:self, layer:Layer) Add tiles to tile layer
+---@field setTile fun(self:self, index:any, tileset:any, gid:any) Create tiles
+---@field swapTile fun(self:self, instance:any, tile:any) Swap a tile in a spritebatch
+---@field update fun(self:self, dt:any) Animated tile and update every layer
+
+---@class Layer
+---@see TileLayer
+---@see ObjectLayer
+---@see ImageLayer
+---@see CustomLayer
+
+--- @class TileLayer
+--- @field name any The name of the layer
+--- @field x any Position on the X axis (in pixels)
+--- @field y any Position on the Y axis (in pixels)
+--- @field width any Width of layer (in tiles)
+--- @field height any Height of layer (in tiles)
+--- @field visible any Toggle if layer is visible or hidden
+--- @field opacity any Opacity of layer
+--- @field properties any Custom properties
+--- @field data any A tileWo dimensional table filled with individual tiles indexed by [y][x] (in tiles)
+--- @field update fun() Update function
+--- @field draw fun() Draw function
+--- @see Map.layers
+--- @see Tile
+
+--- @class ObjectLayer
+--- @field name any The name of the layer
+--- @field x any Position on the X axis (in pixels)
+--- @field y any Position on the Y axis (in pixels)
+--- @field visible any Toggle if layer is visible or hidden
+--- @field opacity any Opacity of layer
+--- @field properties any Custom properties
+--- @field objects Object[] List of objects indexed by draw order
+--- @field update fun() Update function
+--- @field draw fun() Draw function
+--- @see Map.layers
+--- @see Object
+
+--- @class ImageLayer
+--- @field name any The name of the layer
+--- @field x any Position on the X axis (in pixels)
+--- @field y any Position on the Y axis (in pixels)
+--- @field visible any Toggle if layer is visible or hidden
+--- @field opacity any Opacity of layer
+--- @field properties any Custom properties
+--- @field image any Image to be drawn
+--- @field update function Update function
+--- @field draw fun() Draw function
+--- @see Map.layers
+
+--- Custom Layers are used to place userdata such as sprites within the draw order of the map.
+--- @class CustomLayer
+--- @field name any The name of the layer
+--- @field x any Position on the X axis (in pixels)
+--- @field y any Position on the Y axis (in pixels)
+--- @field visible any Toggle if layer is visible or hidden
+--- @field opacity any Opacity of layer
+--- @field properties any Custom properties
+--- @field update fun() Update function
+--- @field draw fun() Draw function
+--- @see Map.layers
+
+--- @class Tile
+--- @field id any Local ID within Tileset
+--- @field gid any Global ID
+--- @field tileset any Tileset ID
+--- @field quad any Quad object
+--- @field properties any Custom properties
+--- @field terrain any Terrain data
+--- @field animation any Animation data
+--- @field frame any Current animation frame
+--- @field time any Time spent on current animation frame
+--- @field width any Width of tile
+--- @field height any Height of tile
+--- @field sx any Scale value on the X axis
+--- @field sy any Scale value on the Y axis
+--- @field r any Rotation of tile (in radians)
+--- @field offset any Offset drawing position
+--- @field offset.x any Offset value on the X axis
+--- @field offset.y any Offset value on the Y axis
+--- @see Map.tiles
+
+--- @class TileInstance
+--- @field batch any Spritebatch the Tile Instance belongs to
+--- @field id any ID within the spritebatch
+--- @field gid any Global ID
+--- @field x any Position on the X axis (in pixels)
+--- @field y any Position on the Y axis (in pixels)
+--- @see Map.tileInstances
+--- @see Tile
+
+--- @class Object
+--- @field id any Global ID
+--- @field name any Name of object (non-unique)
+--- @field shape any Shape of object
+--- @field x any Position of object on X axis (in pixels)
+--- @field y any Position of object on Y axis (in pixels)
+--- @field width any Width of object (in pixels)
+--- @field height any Height of object (in pixels)
+--- @field rotation any Rotation of object (in radians)
+--- @field visible any Toggle if object is visible or hidden
+--- @field properties any Custom properties
+--- @field ellipse any List of vertices of specific shape
+--- @field rectangle any List of vertices of specific shape
+--- @field polygon any List of vertices of specific shape
+--- @field polyline any List of vertices of specific shape
+--- @see Map.objects
