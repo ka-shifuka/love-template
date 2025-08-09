@@ -1,4 +1,4 @@
-require "utilities.ui.control"
+require "src.utilities.ui.control"
 
 UI = {}
 

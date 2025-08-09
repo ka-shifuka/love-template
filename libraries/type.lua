@@ -8,6 +8,7 @@
 ---
 ---@field enter fun(self, className:string): boolean
 ---@field exit fun(self, className:string): boolean
+---@field stay fun(self, className:string): boolean
 ---
 ---@field destroy fun(self)
 ---

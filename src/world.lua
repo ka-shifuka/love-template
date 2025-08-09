@@ -1,4 +1,4 @@
-local wf = require("library.windfield")
+local wf = require("libraries.windfield")
 
 local gravityXForce = 0
 local gravityYForce = 0

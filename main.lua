@@ -2,18 +2,18 @@ local gr = love.graphics
 
 function love.load()
 	gr.setDefaultFilter("nearest", "nearest")
-	timer = require("library.hump.timer")
+	timer = require("libraries.hump.timer")
 
-	require "library.gooi"
+	require "libraries.gooi"
 
 	require "src.world"
 	require "src.player"
 
-	require "utilities.ui"
-	require "utilities.cam"
+	require "src.utilities.ui"
+	require "src.utilities.cam"
 
 	--- this is just a background
-	universe = gr.newImage("sprite/universe-2742113_1280.jpg")
+	universe = gr.newImage("sprites/universe-2742113_1280.jpg")
 end
 
 function love.update(dt)

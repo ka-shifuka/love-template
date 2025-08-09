@@ -2,10 +2,11 @@
     "$schema": "https://raw.githubusercontent.com/luals/vscode-lua/master/setting/schema.json",
     "comment": "change stuf here",
     "diagnostics.disable": [
-        "lowercase-global"
+        "lowercase-global",
+		"duplicate-doc-field"
     ],
     "workspace.library": [
-        "$HOME/ex-repo/lua-addons/love2d/library"
+        "$HOME/external-repo/lua-addons/love2d/library"
     ],
 	"runtime.version": "LuaJIT"
 }

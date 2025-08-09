@@ -1,4 +1,4 @@
-local camera = require "library.hump.camera"
+local camera = require("libraries.hump.camera")
 
 --- global camera utilities
 ---@type hump.camera

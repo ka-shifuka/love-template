@@ -7,10 +7,10 @@ player.speed = 300
 player.angle = 0
 player.direction = "right"
 
-player.image = gr.newImage("sprite/kanada.png")
+player.image = gr.newImage("sprites/kanada.png")
 player.scy = 0.3
 
-local tween = require("library.tween")
+local tween = require("libraries.tween")
 player.tween = tween.new(1, player, { scy = 0.25 })
 player.tweendir = true
 
