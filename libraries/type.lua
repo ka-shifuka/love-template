@@ -1,3 +1,5 @@
+------ WINDFIELD ------
+
 ---@class wfCollision
 ---@field getLinearVelocity fun(self): vx:number, vy:number
 ---@field getX fun(self): x:number
@@ -29,10 +31,7 @@
 
 
 
-
-
-
-
+------ HUMP ------
 
 ---@class hump.camera
 ---@field attach fun(self)
@@ -48,3 +47,20 @@
 ---@field y number
 ---
 ---@field mechanic any
+
+
+
+------ ANIM8 ------
+
+---@class a8.animation
+---@field update fun(self:self, dt:any)
+---@field draw fun(self:self, image:love.Image, x:number, y:number, sx:number|any, sy:number|any, ox:number|any, oy:number|any, kx:number|any, ky:number|any)
+---@field gotoFrame fun(self:self, frame:number)
+---@field pause fun(self:self)
+---@field resume fun(self:self)
+---@field clone fun(self:self)
+---@field flipH fun(self:self)
+---@field flipV fun(self:self)
+---@field pauseAtEnd fun(self:self)
+---@field pauseAtStart fun(self:self)
+---@field getDimensions fun(self:self)

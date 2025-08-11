@@ -49,6 +49,7 @@ local circleRes = 30
 ---@field setBGImage fun(self:self, img:love.Image): self
 ---
 ---@field setRadius fun(self:self, radius:number, innerRadius:number): self
+---@field setStyle fun(self:self, style:gooi.style): self
 ---@field border fun(self:self, width:number, color:table, style:string): self
 ---@field noGlass fun(self:self): self
 ---@field no3D fun(self:self): self
