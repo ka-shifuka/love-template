@@ -3,7 +3,8 @@
     "comment": "change stuf here",
     "diagnostics.disable": [
         "lowercase-global",
-		"duplicate-doc-field"
+		"duplicate-set-field",
+		"missing-fields"
     ],
     "workspace.library": [
         "$HOME/external-repo/lua-addons/love2d/library"
