@@ -1,6 +1,6 @@
 ------ WINDFIELD ------
 
----@class wfCollision
+---@class windfield.collider
 ---@field getLinearVelocity fun(self): vx:number, vy:number
 ---@field getX fun(self): x:number
 ---@field getY fun(self): y:number

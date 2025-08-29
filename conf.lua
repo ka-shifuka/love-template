@@ -1,5 +1,5 @@
 function love.conf(t)
-	local GAME_TITLE = "l2d template"
+	local GAME_TITLE = "Survive"
 
 	t.identity = GAME_TITLE
 	t.appendidentity = false
